@@ -3,6 +3,25 @@ import { useTranslation } from 'react-i18next';
 import { handleEnrollmentCheck } from '../services/enrollment';
 import { DOMAINS } from '@smart-sphere/core';
 import type { Domain } from '@smart-sphere/core';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 export const EnrollmentForm = () => {
   const { t, i18n } = useTranslation();
@@ -55,25 +74,80 @@ export const EnrollmentForm = () => {
     setLoading(false);
   };
 
+  const chartData = {
+    labels: Object.values(DOMAINS).map(d => t(d)),
+    datasets: [
+      {
+        label: 'Student Profile',
+        data: Object.values(DOMAINS).map(d => domainScores[d]),
+        backgroundColor: 'rgba(30, 58, 138, 0.2)', // WorldWise Blue transparent
+        borderColor: 'rgba(30, 58, 138, 1)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(30, 58, 138, 1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(30, 58, 138, 1)',
+      },
+    ],
+  };
+
+  const chartOptions = {
+    scales: {
+      r: {
+        angleLines: {
+            color: 'rgba(0, 0, 0, 0.05)'
+        },
+        grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+        },
+        pointLabels: {
+            font: {
+                size: 11,
+                family: 'system-ui'
+            },
+            color: '#4b5563' // text-gray-600
+        },
+        suggestedMin: 0,
+        suggestedMax: 100,
+        ticks: {
+            display: false // Hide numbers on the axes for cleaner look
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        enabled: true
+      }
+    },
+    maintainAspectRatio: true
+  };
+
   return (
-    <div className={`transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'} max-w-md mx-auto bg-white rounded-3xl shadow-2xl p-10 border border-slate-100 space-y-6`}>
+    <div className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[40px]'} max-w-lg mx-auto bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-3xl p-8 sm:p-10 space-y-8`}>
       <div className="flex justify-end">
         <div className="w-20 text-right">
-          <button onClick={toggleLanguage} className="text-xs font-bold text-blue-900 uppercase hover:text-blue-700 transition-colors">
+          <button onClick={toggleLanguage} className="text-xs font-bold text-blue-900 uppercase hover:text-blue-700 transition-colors tracking-wide">
             {i18n.language.startsWith('en') ? 'Tiếng Việt' : 'English'}
           </button>
         </div>
       </div>
 
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900">{t('title')}</h2>
-        <p className="text-gray-500 mt-2">{t('description')}</p>
+      <div className="text-center space-y-2">
+        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{t('title')}</h2>
+        <p className="text-gray-600 text-lg font-light tracking-wide">{t('description')}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="w-48 h-48 mx-auto">
+        <Radar data={chartData} options={chartOptions} />
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-8">
         {/* Lexile Score Input */}
         <div>
-          <label htmlFor="lexile" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="lexile" className="block text-sm font-semibold text-gray-700 tracking-tight mb-2">
             Lexile Score (0 - 2000)
           </label>
           <input
@@ -83,20 +157,20 @@ export const EnrollmentForm = () => {
             max="2000"
             value={lexileScore}
             onChange={(e) => setLexileScore(Number(e.target.value))}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border"
+            className="block w-full rounded-xl border-gray-200 bg-white/50 focus:bg-white transition-colors shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border"
           />
         </div>
 
         {/* Domain Sliders */}
-        <div className="space-y-4">
-          <h3 className="font-medium text-gray-900">Domain Assessment</h3>
+        <div className="space-y-6">
+          <h3 className="font-semibold text-gray-900 tracking-tight border-b border-gray-200 pb-2">Domain Assessment</h3>
           {(Object.values(DOMAINS) as Domain[]).map((domain) => (
-            <div key={domain} className="space-y-1">
-              <div className="flex justify-between text-sm">
-                <label htmlFor={domain} className="font-medium text-gray-700 capitalize">
+            <div key={domain} className="space-y-2 group">
+              <div className="flex justify-between text-sm items-center">
+                <label htmlFor={domain} className="font-medium text-gray-700 capitalize tracking-tight group-hover:text-blue-900 transition-colors">
                   {t(domain)}
                 </label>
-                <span className="text-gray-500">{domainScores[domain]}</span>
+                <span className="font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md min-w-[2rem] text-center">{domainScores[domain]}</span>
               </div>
               <input
                 type="range"
@@ -105,7 +179,7 @@ export const EnrollmentForm = () => {
                 max="100"
                 value={domainScores[domain]}
                 onChange={(e) => handleDomainChange(domain, Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-900"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-900 hover:accent-blue-700 transition-all"
               />
             </div>
           ))}
@@ -114,17 +188,17 @@ export const EnrollmentForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-4 bg-blue-900 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 px-6 bg-gradient-to-r from-blue-900 to-blue-800 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-blue-900/20 hover:-translate-y-0.5 transform transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
           {loading ? 'Processing...' : t('button')}
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200 animate-fade-in">
-          <h3 className="font-bold text-green-800 mb-1">{t('result_title')}</h3>
-          <p className="text-green-700 font-medium">{result.recommendation}</p>
-          <p className="text-sm text-green-600 mt-2 border-t border-green-200 pt-2">
+        <div className="mt-8 p-6 bg-green-50/80 backdrop-blur-sm rounded-2xl border border-green-200 animate-fade-in shadow-inner">
+          <h3 className="font-bold text-green-900 mb-2 text-lg tracking-tight">{t('result_title')}</h3>
+          <p className="text-green-800 font-medium text-lg leading-relaxed">{result.recommendation}</p>
+          <p className="text-sm text-green-700 mt-4 border-t border-green-200/60 pt-3 font-semibold uppercase tracking-wider">
             {t('hub_label')}
           </p>
         </div>
