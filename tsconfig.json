@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@smart-sphere/core/*": ["packages/nbsf-core/*"],
+      "@smart-sphere/portal/*": ["apps/smart-sphere-portal/src/*"]
+    },
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  }
+}
