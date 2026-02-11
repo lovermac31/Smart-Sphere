@@ -1,4 +1,4 @@
-import { StudentProfile } from './types/student';
+import type { StudentProfile } from './types/student';
 
 export const calculateInterventionTier = (student: StudentProfile) => {
   const averageDomainScore = Object.values(student.domains).reduce((a, b) => a + b, 0) / 5;

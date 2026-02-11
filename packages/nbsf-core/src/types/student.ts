@@ -1,4 +1,4 @@
-import { Domain } from '../constants';
+import type { Domain } from '../constants';
 
 export interface StudentProfile {
   id: string;
