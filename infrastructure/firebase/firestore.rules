@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check ownership within a nested ecosystem
+    function isTenantMember(tenantId) {
+      return request.auth != null && request.auth.token.tenantId == tenantId;
+    }
+
+    // Language Schools Ecosystem
+    match /schools/{schoolId} {
+      allow read, write: if isTenantMember(schoolId);
+      
+      match /students/{studentId} {
+        allow read, write: if isTenantMember(schoolId);
+      }
+    }
+
+    // Study Abroad Agency Ecosystem
+    match /agencies/{agencyId} {
+      allow read: if request.auth != null && request.auth.token.agencyId == agencyId;
+    }
+  }
+}
