@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Basic verification: user must be authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Pattern A: Structural Isolation by Tenant ID
+    match /tenants/{tenantId} {
+      // Users can only access their own tenant's data
+      allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+
+      match /students/{studentId} {
+        allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+
+        match /assessments/{assessmentId} {
+          allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+        }
+      }
+    }
+  }
+}
