@@ -3,9 +3,7 @@
 > vite
 
 
-  VITE v7.3.1  ready in 285 ms
+  VITE v7.3.1  ready in 228 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-9:54:44 PM [vite] (client) hmr update /src/components/EnrollmentForm.tsx
-9:55:12 PM [vite] (client) hmr update /src/App.tsx

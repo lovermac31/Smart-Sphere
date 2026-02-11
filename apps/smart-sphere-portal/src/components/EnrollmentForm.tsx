@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { handleEnrollmentCheck } from '../services/enrollment';
 import { DOMAINS } from '@smart-sphere/core';
@@ -8,6 +8,16 @@ export const EnrollmentForm = () => {
   const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Force English on mount to ensure consistent state
+    if (!i18n.language.startsWith('en')) {
+      i18n.changeLanguage('en');
+    }
+    // Trigger entrance animation
+    setIsVisible(true);
+  }, [i18n]);
 
   // State for inputs
   const [lexileScore, setLexileScore] = useState<number>(400); // Default to a reasonable baseline
@@ -20,7 +30,8 @@ export const EnrollmentForm = () => {
   });
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'vi' : 'en');
+    const nextLang = i18n.language.startsWith('en') ? 'vi' : 'en';
+    i18n.changeLanguage(nextLang);
   };
 
   const handleDomainChange = (domain: Domain, value: number) => {
@@ -45,11 +56,13 @@ export const EnrollmentForm = () => {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-lg space-y-6">
+    <div className={`transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'} max-w-md mx-auto bg-white rounded-3xl shadow-2xl p-10 border border-slate-100 space-y-6`}>
       <div className="flex justify-end">
-        <button onClick={toggleLanguage} className="text-xs font-bold text-blue-600 uppercase hover:text-blue-800 transition-colors">
-          {i18n.language === 'en' ? 'Tiếng Việt' : 'English'}
-        </button>
+        <div className="w-20 text-right">
+          <button onClick={toggleLanguage} className="text-xs font-bold text-blue-900 uppercase hover:text-blue-700 transition-colors">
+            {i18n.language.startsWith('en') ? 'Tiếng Việt' : 'English'}
+          </button>
+        </div>
       </div>
 
       <div className="text-center">
@@ -81,7 +94,7 @@ export const EnrollmentForm = () => {
             <div key={domain} className="space-y-1">
               <div className="flex justify-between text-sm">
                 <label htmlFor={domain} className="font-medium text-gray-700 capitalize">
-                  {domain}
+                  {t(domain)}
                 </label>
                 <span className="text-gray-500">{domainScores[domain]}</span>
               </div>
@@ -92,7 +105,7 @@ export const EnrollmentForm = () => {
                 max="100"
                 value={domainScores[domain]}
                 onChange={(e) => handleDomainChange(domain, Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-900"
               />
             </div>
           ))}
@@ -101,7 +114,7 @@ export const EnrollmentForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 px-4 bg-blue-900 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? 'Processing...' : t('button')}
         </button>

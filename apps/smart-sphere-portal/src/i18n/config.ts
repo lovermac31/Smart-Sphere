@@ -14,7 +14,12 @@ i18n
           description: "Discover your child's path to global universities like NYU or Oxford.",
           button: "Check Readiness Now",
           result_title: "Recommendation:",
-          hub_label: "Target Hub: HCMC Hub"
+          hub_label: "Target Hub: HCMC Hub",
+          Listening: "Listening",
+          Speaking: "Speaking",
+          Reading: "Reading",
+          Writing: "Writing",
+          Thinking: "Thinking"
         }
       },
       vi: {
@@ -23,7 +28,12 @@ i18n
           description: "Khám phá con đường vào các đại học toàn cầu như NYU hoặc Oxford cho con bạn.",
           button: "Kiểm Tra Ngay",
           result_title: "Đề xuất:",
-          hub_label: "Trung tâm mục tiêu: HCMC Hub"
+          hub_label: "Trung tâm mục tiêu: HCMC Hub",
+          Listening: "Nghe",
+          Speaking: "Nói",
+          Reading: "Đọc",
+          Writing: "Viết",
+          Thinking: "Tư duy"
         }
       }
     }
