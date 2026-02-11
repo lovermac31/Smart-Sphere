@@ -10,7 +10,7 @@ i18n
     resources: {
       en: {
         translation: {
-          title: "Summer Camp Interest Check",
+          title: "WorldWise Learning: Summer Camp Assessment",
           description: "Discover your child's path to global universities like NYU or Oxford.",
           button: "Check Readiness Now",
           result_title: "Recommendation:",

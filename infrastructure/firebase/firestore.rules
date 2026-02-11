@@ -1,23 +1,23 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Helper to check ownership within a nested ecosystem
-    function isTenantMember(tenantId) {
-      return request.auth != null && request.auth.token.tenantId == tenantId;
+    // Basic verification: user must be authenticated
+    function isAuthenticated() {
+      return request.auth != null;
     }
 
-    // Language Schools Ecosystem
-    match /schools/{schoolId} {
-      allow read, write: if isTenantMember(schoolId);
-      
+    // Pattern A: Structural Isolation by Tenant ID
+    match /tenants/{tenantId} {
+      // Users can only access their own tenant's data
+      allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+
       match /students/{studentId} {
-        allow read, write: if isTenantMember(schoolId);
+        allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+        
+        match /assessments/{assessmentId} {
+          allow read, write: if isAuthenticated() && request.auth.token.tenantId == tenantId;
+        }
       }
-    }
-
-    // Study Abroad Agency Ecosystem
-    match /agencies/{agencyId} {
-      allow read: if request.auth != null && request.auth.token.agencyId == agencyId;
     }
   }
 }
