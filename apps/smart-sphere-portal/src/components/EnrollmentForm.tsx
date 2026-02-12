@@ -13,6 +13,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
+import { DiagnosticCard } from './DiagnosticCard';
+import { TierBreakdown } from './TierBreakdown';
 
 ChartJS.register(
   RadialLinearScale,
@@ -195,12 +197,9 @@ export const EnrollmentForm = () => {
       </form>
 
       {result && (
-        <div className="mt-8 p-6 bg-green-50/80 backdrop-blur-sm rounded-2xl border border-green-200 animate-fade-in shadow-inner">
-          <h3 className="font-bold text-green-900 mb-2 text-lg tracking-tight">{t('result_title')}</h3>
-          <p className="text-green-800 font-medium text-lg leading-relaxed">{result.recommendation}</p>
-          <p className="text-sm text-green-700 mt-4 border-t border-green-200/60 pt-3 font-semibold uppercase tracking-wider">
-            {t('hub_label')}
-          </p>
+        <div className="mt-10 space-y-6 animate-fade-in-up">
+          <DiagnosticCard result={result} />
+          <TierBreakdown currentTier={result.tier} />
         </div>
       )}
     </div>
