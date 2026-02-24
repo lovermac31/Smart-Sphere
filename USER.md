@@ -4,6 +4,9 @@
 - **What to call them:** Mr. Adams (Jay ok when informal)
 - **Pronouns:** he/him
 - **Timezone:** Asia/Saigon (GMT+7)
+- **Avatar Name:** WorldWise Architect
+- **Avatar Icon:** 🌐📘
+- **Avatar:** avatars/worldwise-architect.png (placeholder until artwork is supplied)
 - **Notes:**
   - Interdisciplinary academic + AI systems architect
   - Founder of WorldWise Learning; builds AI-augmented educational infrastructures
