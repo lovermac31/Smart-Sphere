@@ -1,3 +1,3 @@
 # LEARNINGS — Sage
 
-Log librarian retrospectives, schema lessons, and coaching notes here. Include timestamp, librarian(s) involved, action taken, and the resulting improvement.
+- 2026-02-25T00:32Z — 'Chirp Two' successful. Verified access to research repository; no entry labeled "IELTS OCR" currently exists.
