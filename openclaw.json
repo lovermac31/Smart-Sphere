@@ -1,0 +1,495 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.23",
+    "lastTouchedAt": "2026-02-24T18:04:36.023Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-24T18:04:35.905Z",
+    "lastRunVersion": "2026.2.23",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:default": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      },
+      "github:default": {
+        "provider": "github",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai/gpt-5.1-codex",
+        "fallbacks": [
+          "deepseek/deepseek-r1",
+          "deepseek/deepseek-chat",
+          "openai-codex/gpt-5.3-codex"
+        ]
+      },
+      "models": {
+        "openai/gpt-5.1-codex": {},
+        "openai/gpt-4o": {},
+        "openai-codex/gpt-5.3-codex": {},
+        "qwen-portal/qwen-max": {},
+        "nvidia/meta/llama-3.1-405b-instruct": {},
+        "deepseek/deepseek-r1": {},
+        "deepseek/deepseek-chat": {}
+      },
+      "workspace": "~/openclaw-workspace/production-squad/",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 1,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "baby-ceo",
+        "name": "Baby Ceo",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "test-agent",
+        "name": "test-agent",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "agentDir": "/Users/jayadams/.openclaw/agents/test-agent/agent",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "orchestrator",
+        "name": "Orchestrator",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "sage",
+        "name": "Sage",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "watchtower",
+        "name": "Watchtower",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "quota-cost-guard",
+        "name": "Quota Cost Guard",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "atlas",
+        "name": "Atlas",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-7",
+        "name": "Subagent 7",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-8",
+        "name": "Subagent 8",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-9",
+        "name": "Subagent 9",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-10",
+        "name": "Subagent 10",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-11",
+        "name": "Subagent 11",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-12",
+        "name": "Subagent 12",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-13",
+        "name": "Subagent 13",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-14",
+        "name": "Subagent 14",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-15",
+        "name": "Subagent 15",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-16",
+        "name": "Subagent 16",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-17",
+        "name": "Subagent 17",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-18",
+        "name": "Subagent 18",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-19",
+        "name": "Subagent 19",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-20",
+        "name": "Subagent 20",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-21",
+        "name": "Subagent 21",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-22",
+        "name": "Subagent 22",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-23",
+        "name": "Subagent 23",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-24",
+        "name": "Subagent 24",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-25",
+        "name": "Subagent 25",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-26",
+        "name": "Subagent 26",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-27",
+        "name": "Subagent 27",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "subagent-28",
+        "name": "Subagent 28",
+        "workspace": "/Users/jayadams/.openclaw/workspace",
+        "model": "openai/gpt-5.1-codex",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "REDACTED"
+      }
+    },
+    "sessions": {
+      "visibility": "all"
+    },
+    "agentToAgent": {
+      "enabled": true,
+      "allow": [
+        "*"
+      ]
+    },
+    "exec": {
+      "ask": "on-miss",
+      "safeBins": [
+        "/usr/bin/curl",
+        "/usr/bin/jq",
+        "/usr/bin/python3",
+        "/opt/homebrew/bin/wacli",
+        "/usr/local/bin/openclaw",
+        "/usr/bin/git",
+        "/usr/bin/head",
+        "/usr/bin/tail",
+        "/usr/bin/tr",
+        "/usr/bin/wc"
+      ],
+      "safeBinProfiles": {
+        "/opt/homebrew/bin/wacli": {},
+        "/usr/bin/curl": {},
+        "/usr/bin/git": {},
+        "/usr/bin/head": {},
+        "/usr/bin/jq": {},
+        "/usr/bin/python3": {},
+        "/usr/bin/tail": {},
+        "/usr/bin/tr": {},
+        "/usr/bin/wc": {},
+        "/usr/local/bin/openclaw": {}
+      }
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "baby-ceo",
+      "match": {
+        "channel": "cli"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {},
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "REDACTED"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "qwen-portal-auth": {
+        "enabled": true
+      }
+    }
+  }
+}
