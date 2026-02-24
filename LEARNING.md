@@ -16,3 +16,9 @@
   2. **Sage** — central librarian; adding learning + autonomy enables it to coach Atlas/Iris/Ember/Lumen without manual babysitting and to audit knowledge flows for ethics/compliance.
   3. **Builder** — high leverage for implementation; an ethics layer prevents reckless deployments, learning/autonomy let it iterate without constant approvals.
 - **Next actions:** Finish the materializer, enrich registry with traits/ethics for every agent, wire missing skills (Notion, monitoring, image search), then grant sub-agent autonomy per promotion list.
+
+## 2026-02-25 — Executive Cabinet Augmentation
+- **Watchtower:** Upgraded SOUL with ethics guardrails (truth-first alerts, privacy boundaries), learning log (`LEARNINGS.md`), and autonomy scope (continuous sweeps + low-risk remediations). README/TOOLS updated.
+- **Sage:** Defined ethics (data governance, provenance enforcement), learning cadence (schema retros), and autonomy to orchestrate librarians. Tools/readme refreshed.
+- **Builder:** Added deployment ethics (tests + rollback), learning retros, and autonomy to lead Forge Six under defined limits. Tool expectations and README updated.
+- **Telemetry:** Watchtower recorded `2026-02-24T23:50:43 | hello_world_broadcast | count=32 | sample='2026-02-24T23:50:43 | orchestrator -> aegis | hello world'` as proof of hive activation.

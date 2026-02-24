@@ -1,7 +1,8 @@
 # TOOLS.md — Sage
 
 Required/expected tools:
-- notion apis
-- schema validators
+- Notion CLI / API (memo or custom skill)
+- Schema diff/validation utilities
+- Knowledge freshness audit scripts
 
-Add any agent-specific credentials or CLI instructions here.
+Record access tokens, CLI usage guides, and workflow automations here once provisioned.

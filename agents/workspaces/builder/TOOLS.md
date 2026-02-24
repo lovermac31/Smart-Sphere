@@ -1,7 +1,9 @@
 # TOOLS.md — Builder
 
 Required/expected tools:
-- exec
-- coding-agent
+- exec (gateway host, full security)
+- coding-agent skill (delegated coding)
+- CI/CD CLI (gh, git, pipeline runners)
+- Observability hooks (logs/metrics for deployments)
 
-Add any agent-specific credentials or CLI instructions here.
+Document credentials, environment variables, and Forge Six integration steps here.

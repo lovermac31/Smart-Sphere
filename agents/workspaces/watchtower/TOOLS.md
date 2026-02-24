@@ -1,6 +1,8 @@
 # TOOLS.md — Watchtower
 
 Required/expected tools:
-- dashboards
+- Dashboards / observability stack (Grafana/Chronosphere, etc.)
+- Telemetry collectors (logs + metrics + traces)
+- Alert transport (PagerDuty, Slack webhook, email)
 
-Add any agent-specific credentials or CLI instructions here.
+Add credentials, CLI usage, or API endpoints here once provisioned.
